@@ -1,0 +1,41 @@
+name: SonarCloud Analysis with Quality Gate
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonarcloud:
+    name: SonarCloud Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Show cloned repo
+        run: |
+          pwd
+          ls -al
+          dir
+
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=sonarcloudqualitycheck
+            -Dsonar.projectKey=your_project_key_here
+            -Dsonar.projectName=
+            -Dsonar.sources=.
+            -Dsonar.exclusions=**/tests/**,**/docs/**,**/vendor/**,**/*.md
+            -Dsonar.sourceEncoding=UTF-8
+            -Dsonar.qualitygate.wait=true
+            -Dsonar.qualitygate.timeout=300
