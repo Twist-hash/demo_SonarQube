@@ -32,7 +32,7 @@ jobs:
         with:
           args: >
             -Dsonar.organization=sonarcloudqualitycheck
-            -Dsonar.projectKey=twist-hash
+            -Dsonar.projectKey=twist-hash/demo_SonarQube
             -Dsonar.projectName=demo_SonarQube
             -Dsonar.sources=.
             -Dsonar.exclusions=**/tests/**,**/docs/**,**/vendor/**,**/*.md
