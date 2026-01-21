@@ -32,8 +32,8 @@ jobs:
         with:
           args: >
             -Dsonar.organization=sonarcloudqualitycheck
-            -Dsonar.projectKey=your_project_key_here
-            -Dsonar.projectName=
+            -Dsonar.projectKey=twist-hash
+            -Dsonar.projectName=demo_SonarQube
             -Dsonar.sources=.
             -Dsonar.exclusions=**/tests/**,**/docs/**,**/vendor/**,**/*.md
             -Dsonar.sourceEncoding=UTF-8
