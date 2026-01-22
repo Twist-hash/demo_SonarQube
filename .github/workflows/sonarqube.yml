@@ -34,7 +34,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.organization=Twist-hash
+            -Dsonar.organization=twist-hash
             -Dsonar.projectKey=Twist-hash_demo_SonarQube
             -Dsonar.projectName=demo_SonarQube
             -Dsonar.sources=.
