@@ -1,4 +1,4 @@
-name: SonarCloud Analysis with Quality Gate
+name: SonarCloud Analysis with Quality Gate (Demo Target)
 
 on:
   push:
@@ -22,7 +22,10 @@ jobs:
         run: |
           pwd
           ls -al
-          dir
+
+      # Spin up a demo vulnerable app (Juice Shop) as target
+      - name: Start Juice Shop
+        run: docker run -d -p 3000:3000 bkimminich/juice-shop
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@v2
@@ -31,7 +34,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.organization=sonarcloudqualitycheck
+            -Dsonar.organization=Twist-hash
             -Dsonar.projectKey=Twist-hash_demo_SonarQube
             -Dsonar.projectName=demo_SonarQube
             -Dsonar.sources=.
